@@ -84,13 +84,14 @@ li.ant-list-item {
   background: rgba(18, 20, 28, 0.65) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  margin-bottom: 1rem !important;
+  margin: 0 auto 1rem auto !important;
   border-block-start: none !important;
   min-height: 160px !important;
   max-height: 350px !important;
   overflow: hidden !important;
   position: relative !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  width: 100% !important;
 }
 
 li.ant-list-item.alpha-background.message-full {
@@ -115,8 +116,8 @@ li.ant-list-item.alpha-background.message-full {
   border-radius: 16px 0 0 16px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
-  width: clamp(100px, 14vw, 140px) !important;
-  min-width: 100px !important;
+  width: clamp(125px, 17vw, 165px) !important;
+  min-width: 120px !important;
   height: 100% !important;
 }
 
@@ -131,7 +132,7 @@ li.ant-list-item.alpha-background.message-full {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: center center !important;
   transform: scale(1.06) !important;
   border-radius: 16px 0 0 16px !important;
   display: block !important;
