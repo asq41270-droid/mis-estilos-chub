@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 
 /* ==========================================================================
-   1. VARIABLES GLOBALES (COLOR MAESTRO)
+   1. VARIABLES GLOBALES (MODO OSCURO, COLOR MAESTRO Y FUENTES DINÁMICAS)
    ========================================================================== */
 :root {
   --bot-color: #FFB085 !important;
-  --dark-background-color: #151114 !important;
+  --bot-font-title: 'Pacifico', cursive !important;
+  --bot-font-text: 'Playpen Sans Thai', cursive, sans-serif !important;
+  --dark-background-color: #121216 !important;
   --link-color: var(--bot-color) !important;
   --ribbon-color: #19171f !important;
 }
@@ -15,7 +17,7 @@ span[class*=quote-color] {
 }
 
 /* ==========================================================================
-   2. EL FONDO DEL CHAT Y SCROLL GENERAL
+   2. EL FONDO DEL CHAT, CABECERA Y SCROLL GENERAL
    ========================================================================== */
 .chub-css-override .ant-layout,
 .chub-css-override .ant-layout-footer,
@@ -48,14 +50,33 @@ div.abs-100-dvh[style*="fixed"],
   position: relative !important;
 }
 
+/* Barra superior, Menú de 3 líneas y Botón de Salir tematizados */
 .ant-row.ant-row-center,
-.ant-row.ant-row-center .ant-col,
+.ant-row.ant-row-center .ant-col {
+  position: relative !important;
+  z-index: 50 !important;
+  pointer-events: auto !important;
+}
+
 .ant-row.ant-row-center button,
 .ant-row.ant-row-center .ant-btn {
   position: relative !important;
   z-index: 50 !important;
   pointer-events: auto !important;
   cursor: pointer !important;
+  color: var(--bot-color) !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-row.ant-row-center button:hover,
+.ant-row.ant-row-center .ant-btn:hover {
+  background: color-mix(in srgb, var(--bot-color) 15%, transparent) !important;
+  transform: scale(1.08) !important;
+}
+
+.ant-row.ant-row-center svg,
+.ant-row.ant-row-center .anticon {
+  color: var(--bot-color) !important;
 }
 
 .chat-area-row {
@@ -74,7 +95,7 @@ div.abs-100-dvh[style*="fixed"],
 }
 
 /* ==========================================================================
-   3. MENSAJES, AVATAR LATERAL Y SCROLL DE TEXTO
+   3. MENSAJES Y AVATAR LATERAL (MODO OSCURO ELEVADO)
    ========================================================================== */
 @keyframes messageEntrance {
   from { opacity: 0; transform: translateY(6px); }
@@ -87,7 +108,7 @@ li.ant-list-item {
   padding: 0 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
+  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border-radius: 16px !important;
   border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   margin: 0 auto 1rem auto !important;
@@ -183,8 +204,8 @@ li.ant-list-item.alpha-background.message-full {
 
 .msg-mkdn-container,
 .msg-mkdn-container p {
-  font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
-  color: #f5c8c1 !important;
+  font-family: var(--bot-font-text) !important;
+  color: #e4e6eb !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -206,7 +227,7 @@ li.ant-list-item.alpha-background.message-full {
 
 .msg-mkdn-container blockquote {
   border-left: 3px solid var(--bot-color) !important;
-  background: color-mix(in srgb, var(--bot-color) 8%, rgba(0, 0, 0, 0.3)) !important;
+  background: color-mix(in srgb, var(--bot-color) 8%, rgba(0, 0, 0, 0.35)) !important;
   padding: 8px 14px !important;
   margin: 8px 0 !important;
   border-radius: 0 10px 10px 0 !important;
@@ -214,7 +235,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-title a {
-  font-family: 'Pacifico', cursive !important;
+  font-family: var(--bot-font-title) !important;
   color: var(--bot-color) !important;
   font-size: 1.25rem !important;
 }
@@ -274,14 +295,14 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA DE TEXTO (INPUT INFERIOR)
+   5. BARRA DE ENTRADA RECTA (SIN BORDES REDONDEADOS)
    ========================================================================== */
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
-  border-radius: 16px !important;
+  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
+  border-radius: 0px !important;
   border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   padding: 8px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
@@ -297,6 +318,7 @@ form[class*=rounded-md] textarea,
 textarea.ant-input {
   background: transparent !important;
   color: #fff !important;
+  border-radius: 0px !important;
 }
 
 .chat-input-container button {
@@ -309,33 +331,64 @@ textarea.ant-input {
 }
 
 /* ==========================================================================
-   6. TARJETAS DE PERSONAJES (EXPLORADOR)
+   6. MENÚS DESPLEGABLES, DROPDOWNS Y OPCIONES (TEMATIZADOS)
+   ========================================================================== */
+.ant-dropdown,
+.ant-dropdown-menu,
+.ant-select-dropdown,
+.ant-menu-sub.ant-menu-vertical,
+div.ant-dropdown ul.ant-menu {
+  background: #1F1F24 !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 25%, rgba(255, 255, 255, 0.12)) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6) !important;
+  padding: 6px !important;
+}
+
+.ant-dropdown-menu-item,
+.ant-select-item,
+div.ant-dropdown .ant-menu-item {
+  color: #e0e0e0 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-dropdown-menu-item:hover,
+.ant-select-item-option:hover,
+div.ant-dropdown .ant-menu-item:hover {
+  background-color: color-mix(in srgb, var(--bot-color) 20%, #2A2A32) !important;
+  color: #fff !important;
+}
+
+.ant-dropdown-menu-item:hover a {
+  color: #fff !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: var(--bot-color) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   7. TARJETAS, RIBBONS Y TAGS
    ========================================================================== */
 .ant-card,
 .char-card-class {
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  background: rgba(30, 30, 40, 0.5) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+  background: #18181D !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .ant-card.ant-card-hoverable:hover,
 .char-card-class:hover {
   transform: rotate(-2deg) scale(1.03);
-}
-
-.ant-card.ant-card-hoverable:hover .ant-card-cover img,
-.char-card-class:hover .ant-card-cover img {
-  transform: scale(1.12);
-}
-
-.ant-card-cover {
-  overflow: hidden;
+  border-color: var(--bot-color) !important;
 }
 
 .ant-card-head {
-  background-color: #19171f !important;
+  background-color: #1F1F24 !important;
   border-bottom: none;
   padding: 12px 16px;
   border-radius: 12px 12px 0 0;
@@ -352,140 +405,62 @@ textarea.ant-input {
   padding: 16px;
 }
 
-.ant-card.not-dismissed {
-  background-color: #2a2a2e !important;
-  border: 1px solid var(--bot-color) !important;
-}
-
-.ant-card-actions {
-  background-color: #000 !important;
-}
-
-.ant-card-small .ant-avatar,
-.ant-card-small .ant-avatar img {
-  border-radius: 10% !important;
-}
-
-/* ==========================================================================
-   7. TAGS Y RIBBONS (CYBERPUNK)
-   ========================================================================== */
-.ant-ribbon,
 .ant-tag {
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
-
-.ant-tag {
-  background: rgba(255, 255, 255, 0.5) !important;
-  color: #000 !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
   border: none !important;
   border-radius: 0 !important;
   padding: 0.1em 0.5em !important;
   font-size: 0.6rem !important;
-  transition: background 0.2s, color 0.2s !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
 }
 
 .ant-tag:hover {
-  background: #000 !important;
-  color: #fff !important;
-  cursor: pointer;
-}
-
-.ant-ribbon-placement-end {
-  top: 0 !important;
-  inset-inline-end: -8px !important;
+  background: var(--bot-color) !important;
+  color: #000 !important;
 }
 
 .ant-ribbon {
   background: var(--bot-color) !important;
-  color: #fff !important;
+  color: #000 !important;
+  font-weight: 800 !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
   border-radius: 0 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   padding: 0 10px 0 5px !important;
-  margin-right: -2px;
   font-size: 10px !important;
-  letter-spacing: 0.5px !important;
-  white-space: nowrap !important;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
-}
-
-.ant-ribbon-text {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.ant-ribbon-text > span {
-  display: contents !important;
-}
-
-span.fake-ribbon {
-  background-color: #19171f !important;
-  font-size: 0.7rem;
+  text-transform: uppercase !important;
 }
 
 /* ==========================================================================
    8. BOTONES GLOBALES
    ========================================================================== */
-button.ant-btn.ant-btn-primary {
-  min-height: 40px !important;
-  border-radius: 8px !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
-
 .ant-btn-primary {
-  background: rgba(40, 40, 50, 0.6) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  min-height: 36px;
+  background: color-mix(in srgb, var(--bot-color) 20%, #25252D) !important;
   color: #fff !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 40%, rgba(255, 255, 255, 0.1)) !important;
+  border-radius: 8px !important;
 }
 
 .ant-btn-primary:hover {
-  transform: translateY(-2px) !important;
+  background: var(--bot-color) !important;
   border-color: var(--bot-color) !important;
-  color: #fff !important;
+  color: #000 !important;
+  font-weight: 700 !important;
   box-shadow: 0 0 20px -2px var(--bot-color) !important;
 }
 
-.ant-btn-primary:active {
-  transform: translateY(1px) !important;
-  background: rgba(50, 50, 60, 0.7) !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-}
-
 .ant-btn-default {
-  background: 0 0 !important;
-  min-height: 36px;
+  background: transparent !important;
   color: #ccc !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .ant-btn-default:hover {
-  transform: translateY(-2px) !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-  border-color: #fff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-}
-
-.ant-btn-default:active {
-  transform: translateY(1px) !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  box-shadow: none !important;
-}
-
-.ant-btn-default,
-.ant-btn-primary,
-.fake-card {
-  transition: 0.2s !important;
+  border-color: var(--bot-color) !important;
+  color: var(--bot-color) !important;
 }
 
 @keyframes danger-glow {
@@ -496,223 +471,37 @@ button.ant-btn.ant-btn-primary {
 
 .ant-btn-dangerous {
   background: rgba(80, 20, 20, 0.6) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
   color: #ffc2c2 !important;
   border: 1px solid rgba(255, 80, 80, 0.6) !important;
   animation: danger-glow 2.5s infinite ease-in-out !important;
-  transition: all 0.2s ease !important;
-}
-
-.ant-btn-dangerous:hover {
-  transform: translateY(-2px) !important;
-  background: rgba(120, 30, 30, 0.8) !important;
-  color: #fff !important;
-  border-color: rgba(255, 100, 100, 0.8) !important;
-  animation: none !important;
-  box-shadow: 0 0 15px 0 rgba(255, 80, 80, 0.9) !important;
-}
-
-.ant-btn-dangerous:active {
-  transform: translateY(1px) !important;
-  background: rgba(140, 40, 40, 0.9) !important;
-  box-shadow: none !important;
-}
-
-.ant-btn,
-.ant-input-affix-wrapper,
-.ant-select {
-  min-height: 44px !important;
-}
-
-.ant-btn[title=Ascending],
-.ant-btn[title=Descending] {
-  width: 44px !important;
-  padding: 0 !important;
-  justify-content: center;
 }
 
 /* ==========================================================================
-   9. MENÚS, DROPDOWNS, FORMULARIOS Y TOOLTIPS
+   9. TOOLTIPS Y FORMULARIOS
    ========================================================================== */
-.ant-card,
-.ant-form-item .ant-input,
-.ant-input,
-.ant-input-affix-wrapper,
-.ant-select-selector,
-.char-card-class,
-textarea.ant-input {
-  background: rgba(30, 30, 40, 0.5) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+.ant-tooltip-inner {
+  background: #1F1F24 !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 25%, rgba(255, 255, 255, 0.15)) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 10px !important;
+  color: #e0e0e0 !important;
+}
+
+.ant-tooltip-arrow-content {
+  background: #1F1F24 !important;
 }
 
 .ant-input-affix-wrapper:focus-within,
 .ant-input:focus,
-.ant-select-selector:has(input:focus),
 textarea.ant-input:focus {
   border-color: var(--bot-color) !important;
-  box-shadow: 0 0 0 3px rgba(255, 176, 133, 0.2) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bot-color) 25%, transparent) !important;
   outline: 0 !important;
 }
 
-.ant-input-number,
-.ant-list-item,
-.ant-menu-sub.ant-menu-vertical,
-div.ant-dropdown ul.ant-menu {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #777 !important;
-  opacity: 1 !important;
-}
-
-.ant-select.ant-select-selector,
-div.ant-select-selection-overflow {
-  height: 32px;
-  font-size: 14px;
-}
-
-.ant-select-selection-item,
-.ant-select-selection-placeholder {
-  color: #ccc !important;
-}
-
-.ant-select-dropdown {
-  background-color: #1e1e1e !important;
-  border: 1px solid #4a4a4a !important;
-  border-radius: 12px !important;
-  padding: 4px !important;
-}
-
-.ant-menu-sub.ant-menu-vertical .ant-menu-item,
-.ant-select-item,
-div.ant-dropdown .ant-menu-item {
-  color: #ccc !important;
-  border-radius: 8px !important;
-}
-
-.ant-menu-sub.ant-menu-vertical .ant-menu-item:hover,
-.ant-select-item-option:hover,
-div.ant-dropdown .ant-menu-item:hover,
-li.ant-dropdown-menu-item:not(:has(.ant-upload-wrapper)):hover {
-  background-color: #333 !important;
-  color: #fff !important;
-}
-
-.ant-select-item-option-selected {
-  background-color: var(--bot-color) !important;
-  color: #fff !important;
-}
-
-li.ant-dropdown-menu-item:hover {
-  background-color: #333 !important;
-}
-
-li.ant-dropdown-menu-item:hover a {
-  color: #fff !important;
-}
-
-.ant-select-dropdown .ant-select-item-group > .ant-row:hover {
-  color: var(--bot-color) !important;
-}
-
-.ant-dropdown-menu-item {
-  justify-content: flex-start !important;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-}
-
-.ant-dropdown-menu-item .ant-dropdown-menu-title-content {
-  text-align: left !important;
-}
-
-.ant-menu-sub.ant-menu-vertical,
-div.ant-dropdown ul.ant-menu {
-  background: rgba(30, 30, 40, 0.5) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 8px !important;
-}
-
-.ant-menu-sub.ant-menu-vertical .ant-menu-item::after {
-  border-right: none !important;
-}
-
-.ant-tooltip {
-  pointer-events: none;
-}
-
-.ant-tooltip-inner {
-  pointer-events: auto;
-  background: rgba(40, 40, 50, 0.7) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
-  border-radius: 12px !important;
-  color: #e0e0e0 !important;
-  padding: 12px 16px !important;
-  max-width: 350px;
-  max-height: 220px;
-  overflow-y: auto;
-  font-size: 14px !important;
-  line-height: 1.6 !important;
-}
-
-.ant-tooltip-arrow-content {
-  background: rgba(40, 40, 50, 0.7) !important;
-}
-
-.ant-tooltip-inner::-webkit-scrollbar {
-  width: 6px;
-}
-
-.ant-tooltip-inner::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-.ant-tooltip-inner::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ant-tooltip-inner::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
 /* ==========================================================================
-   10. GLITCH Y MISCELÁNEA (PAGINACIÓN, TABS, SWITCHES)
+   10. GLITCH Y MISCELÁNEA
    ========================================================================== */
-@keyframes throb {
-  0%, 100% { transform: scale(1.1); }
-  50% { transform: scale(1.2); }
-}
-
-a[href="/"] img {
-  transition: transform 0.2s ease-in-out;
-}
-
-a[href="/"] img:hover {
-  transform: scale(1.1);
-  animation: 1.5s ease-in-out 0.2s infinite throb;
-}
-
-@keyframes digital-scan-anim {
-  0%, 100%, 90%, 94% { opacity: 0; clip-path: inset(50% 0 50% 0); }
-  91% { opacity: 0.6; clip-path: inset(10% 0 88% 0); }
-  92% { opacity: 0; }
-  93% { opacity: 0.5; clip-path: inset(80% 0 18% 0); }
-}
-
 @keyframes glitch-box-shadow {
   0%, 100%, 90%, 93% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
   91% { box-shadow: 3px 2px 0 red, -3px -2px 0 #0ff, 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
@@ -727,113 +516,24 @@ a[href="/"] img:hover {
 
 .ant-card:has(a[href*="/users/asq41270-droid"]),
 .char-card-class:has(a[href*="/users/asq41270-droid"]) {
-  position: relative;
   animation: 4s step-end infinite glitch-box-shadow;
 }
 
-.ant-card:has(a[href*="/users/asq41270-droid"])::after,
-.ant-card:has(a[href*="/users/asq41270-droid"])::before,
-.char-card-class:has(a[href*="/users/asq41270-droid"])::after,
-.char-card-class:has(a[href*="/users/asq41270-droid"])::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: inherit;
-  background: rgba(30, 30, 40, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  opacity: 0;
-}
-
-.ant-card:has(a[href*="/users/asq41270-droid"])::before,
-.char-card-class:has(a[href*="/users/asq41270-droid"])::before {
-  mix-blend-mode: screen;
-  background-color: rgba(255, 0, 0, 0.4);
-  animation: 4s step-end infinite digital-scan-anim;
-}
-
-.ant-card:has(a[href*="/users/asq41270-droid"])::after,
-.char-card-class:has(a[href*="/users/asq41270-droid"])::after {
-  mix-blend-mode: screen;
-  background-color: rgba(0, 255, 255, 0.4);
-  animation: 4s step-end 40ms infinite digital-scan-anim;
-}
-
 .ant-card a[href*="/users/asq41270-droid"],
-.ant-card:has(a[href*="/users/asq41270-droid"]) .ant-card-head-title,
-.ant-card:has(a[href*="/users/asq41270-droid"]) .ant-card-meta-title a,
-.char-card-class a[href*="/users/asq41270-droid"],
-.char-card-class:has(a[href*="/users/asq41270-droid"]) .ant-card-head-title,
-.char-card-class:has(a[href*="/users/asq41270-droid"]) .ant-card-meta-title a {
+.char-card-class a[href*="/users/asq41270-droid"] {
   animation: 4s step-end infinite glitch-text-shadow;
 }
 
-.ant-collapse {
-  border: none !important;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-.ant-collapse-item {
-  border-bottom: none !important;
-}
-
 .ant-collapse-content.ant-collapse-content-active {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.25));
+  background: #18181D !important;
   border: none !important;
-  backdrop-filter: blur(6px) saturate(120%);
-  -webkit-backdrop-filter: blur(6px) saturate(120%);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
-.ant-switch {
-  background: rgba(30, 30, 40, 0.8) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+.ant-switch.ant-switch-checked {
+  background: var(--bot-color) !important;
 }
 
-.ant-tabs-tab {
-  text-transform: uppercase;
-  font-style: italic;
-  line-height: 48px;
-  font-weight: 600;
-}
-
-h4.ant-typography:not(form.ant-form h4.ant-typography) {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.chats-list-container .ant-card {
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s, background 0.25s !important;
-}
-
-.chats-list-container .ant-card:hover,
-.fake-card:hover {
-  transform: translateY(-4px);
+.chats-list-container .ant-card:hover {
   border-color: var(--bot-color) !important;
-  background: rgba(40, 40, 50, 0.7) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 10px -2px var(--bot-color) !important;
-}
-
-.fake-card {
-  background: rgba(40, 40, 50, 0.6) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 8px !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-}
-
-.fake-card a {
-  color: #fff !important;
-  font-weight: 600 !important;
-  font-size: 14px !important;
-}
-
-.fake-card:hover {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 20px -2px var(--bot-color) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 12px -2px var(--bot-color) !important;
 }
