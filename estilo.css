@@ -76,6 +76,11 @@ div.abs-100-dvh[style*="fixed"],
 /* ==========================================================================
    3. MENSAJES, AVATAR LATERAL Y SCROLL DE TEXTO
    ========================================================================== */
+@keyframes messageEntrance {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 li.ant-list-item {
   display: flex !important;
   align-items: stretch !important;
@@ -84,14 +89,15 @@ li.ant-list-item {
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
   border-radius: 16px !important;
-  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   margin: 0 auto 1rem auto !important;
   border-block-start: none !important;
   min-height: 210px !important;
   max-height: 420px !important;
   overflow: hidden !important;
   position: relative !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 12px 35px -8px color-mix(in srgb, var(--bot-color) 18%, #000000) !important;
+  animation: messageEntrance 0.25s ease-out !important;
   width: 100% !important;
 }
 
@@ -162,18 +168,23 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar {
-  width: 5px;
+  width: 3px !important;
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--bot-color) 35%, rgba(255, 255, 255, 0.15)) !important;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  transition: background 0.2s !important;
+}
+
+.ant-list-item-meta-content:hover::-webkit-scrollbar-thumb {
+  background: var(--bot-color) !important;
 }
 
 .msg-mkdn-container,
 .msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
-  color: color-mix(in srgb, var(--bot-color) 12%, #e5e8ec) !important;
+  color: #f5c8c1 !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -184,13 +195,22 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .msg-mkdn-container em {
-  color: color-mix(in srgb, var(--bot-color) 75%, #ffffff) !important;
+  color: var(--bot-color) !important;
   font-style: italic !important;
 }
 
 .msg-mkdn-container strong {
-  color: color-mix(in srgb, var(--bot-color) 20%, #ffffff) !important;
+  color: #FFF2EB !important;
   font-weight: 700 !important;
+}
+
+.msg-mkdn-container blockquote {
+  border-left: 3px solid var(--bot-color) !important;
+  background: color-mix(in srgb, var(--bot-color) 8%, rgba(0, 0, 0, 0.3)) !important;
+  padding: 8px 14px !important;
+  margin: 8px 0 !important;
+  border-radius: 0 10px 10px 0 !important;
+  font-style: italic !important;
 }
 
 .ant-list-item-meta-title a {
@@ -199,6 +219,9 @@ li.ant-list-item.alpha-background.message-full {
   font-size: 1.25rem !important;
 }
 
+/* ==========================================================================
+   4. FLECHAS DE PASAR Y REGENERAR MENSAJES
+   ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
@@ -250,21 +273,39 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   height: 14px !important;
 }
 
+/* ==========================================================================
+   5. BARRA DE ENTRADA DE TEXTO (INPUT INFERIOR)
+   ========================================================================== */
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
   border-radius: 16px !important;
-  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   padding: 8px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.chat-input-container form:focus-within {
+  border-color: var(--bot-color) !important;
+  box-shadow: 0 0 25px -5px color-mix(in srgb, var(--bot-color) 30%, transparent) !important;
 }
 
 form[class*=rounded-md] textarea,
 textarea.ant-input {
   background: transparent !important;
   color: #fff !important;
+}
+
+.chat-input-container button {
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.chat-input-container button:hover {
+  color: var(--bot-color) !important;
+  transform: translateY(-2px) scale(1.08) !important;
 }
 
 /* ==========================================================================
@@ -410,7 +451,7 @@ button.ant-btn.ant-btn-primary {
   transform: translateY(-2px) !important;
   border-color: var(--bot-color) !important;
   color: #fff !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 20px -2px var(--bot-color) !important;
+  box-shadow: 0 0 20px -2px var(--bot-color) !important;
 }
 
 .ant-btn-primary:active {
