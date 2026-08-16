@@ -12,7 +12,7 @@ span[class*=quote-color] {
 }
 
 /* ==========================================================================
-   2. EL FONDO DEL CHAT (TRANSPARENCIAS PARA MOSTRAR EL WALLPAPER DEL BOT)
+   2. EL FONDO DEL CHAT Y SCROLL GENERAL
    ========================================================================== */
 .chub-css-override .ant-layout,
 .chub-css-override .ant-layout-footer,
@@ -24,25 +24,37 @@ ul.ant-menu-dark,
   box-shadow: none !important;
 }
 
+.abs-100-dvh {
+  pointer-events: none !important;
+}
+
 div.ant-col-lg-5:has(+ .chat-layout-bigbox) {
   flex-basis: 12.5% !important;
   max-width: 12.5% !important;
+  pointer-events: none !important;
 }
 
 div.ant-col-md-3:has(+ .chat-layout-bigbox) {
   flex-basis: 8.333333% !important;
   max-width: 8.333333% !important;
+  pointer-events: none !important;
 }
 
-/* ==========================================================================
-   3. MENSAJES Y AVATAR FIJO (CORRECCIÓN DEL ERROR DE DESPLAZAMIENTO)
-   ========================================================================== */
-.chat-area-row,
-#chat-messages {
+.chat-area-row {
+  pointer-events: auto !important;
   overflow-y: auto !important;
   scroll-behavior: smooth;
 }
 
+#chat-messages {
+  pointer-events: auto !important;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   3. MENSAJES, AVATAR LATERAL Y SCROLL DE TEXTO
+   ========================================================================== */
 li.ant-list-item {
   display: flex !important;
   align-items: stretch !important;
@@ -126,6 +138,9 @@ li.ant-list-item.alpha-background.message-full {
   border-radius: 4px;
 }
 
+/* ==========================================================================
+   4. FLECHAS DE PASAR Y REGENERAR MENSAJES
+   ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
