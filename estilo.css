@@ -3,6 +3,8 @@
    ========================================================================== */
 :root {
   --dark-background-color: #151114 !important;
+  --link-color: #8be9fd !important;
+  --ribbon-color: #19171f !important;
 }
 
 span[class*=quote-color] {
@@ -10,19 +12,18 @@ span[class*=quote-color] {
 }
 
 /* ==========================================================================
-   2. EL FONDO DEL CHAT (TRANSPARENCIAS PARA MOSTRAR EL FONDO NATIVO DEL BOT)
+   2. EL FONDO DEL CHAT (TRANSPARENCIAS PARA MOSTRAR EL WALLPAPER DEL BOT)
    ========================================================================== */
 .chub-css-override .ant-layout,
 .chub-css-override .ant-layout-footer,
 header.ant-layout-header,
 ul.ant-menu-dark,
 .ant-menu-overflow-item {
-  background: 0 0 !important; /* Vuelve transparente la estructura para ver el wallpaper */
+  background: 0 0 !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Ajuste de columnas laterales para dar más ancho al chat */
 div.ant-col-lg-5:has(+ .chat-layout-bigbox) {
   flex-basis: 12.5% !important;
   max-width: 12.5% !important;
@@ -34,20 +35,20 @@ div.ant-col-md-3:has(+ .chat-layout-bigbox) {
 }
 
 /* ==========================================================================
-   3. MENSAJES Y AVATAR LATERAL (DISEÑO PRINCIPAL DEL CHAT)
+   3. MENSAJES Y AVATAR FIJO (CORRECCIÓN DEL ERROR DE DESPLAZAMIENTO)
    ========================================================================== */
 li.ant-list-item {
   display: flex !important;
   align-items: stretch !important;
-  padding-left: 0 !important;
+  padding: 0 !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   margin-bottom: 1rem !important;
-  padding: 1rem !important;
   border-block-start: none !important;
-  max-height: 1024px !important;
-  overflow: scroll;
+  /* CORRECCIÓN: overflow: hidden evita que la tarjeta haga scroll interno y se descoloque */
+  overflow: hidden !important; 
+  position: relative !important;
 }
 
 .ant-list-item,
@@ -58,49 +59,58 @@ form[class*=rounded-md] {
 
 li.ant-list-item.alpha-background.message-full {
   border-left: none !important;
-}
-
-.ant-list-item.alpha-background.message-full {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding: 0 !important;
 }
 
 .ant-list-item-meta {
   display: flex !important;
   flex: 1;
   align-items: stretch !important;
+  min-height: 100% !important;
 }
 
-/* Contenedor del Avatar del Bot (Franja vertical izquierda) */
+/* Contenedor del Avatar lateral fijo */
 .ant-list-item-meta-avatar {
   margin: 0 20px 0 0 !important;
   padding: 0 !important;
-  display: flex;
-  border-radius: 16px 0 0 16px;
-  overflow: hidden;
+  display: flex !important;
+  align-self: stretch !important;
+  border-radius: 16px 0 0 16px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
 }
 
 .ant-list-item-meta-avatar .ant-image {
   min-width: 96px;
   width: 15vw !important;
   height: 100% !important;
+  display: flex !important;
 }
 
-/* La imagen del avatar estirada cubriendo todo el alto del mensaje */
+/* La imagen del avatar: ajustada al 100% para que nunca deje espacios vacíos */
 .ant-list-item-meta-avatar .ant-image img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   border-radius: 16px 0 0 16px !important;
+  display: block !important;
 }
 
-.ant-list-item-meta-avatar .ant-image-mask,
-.ant-ribbon-corner,
+/* CORRECCIÓN: Desactivar la máscara de clic para evitar que se mueva al tocarla */
+.ant-list-item-meta-avatar .ant-image-mask {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Contenido del texto del mensaje */
 .ant-list-item-meta-content {
-  padding: 1rem 1rem 1rem 0 !important;
+  padding: 1rem 1.2rem 2.5rem 0 !important; /* Espacio extra abajo para que no choquen las flechas */
+  flex: 1;
 }
 
-/* Botones de pasar / regenerar mensaje (Esquina inferior derecha) */
+/* ==========================================================================
+   4. FLECHAS DE PASAR Y REGENERAR MENSAJES (POSICIÓN FIJA)
+   ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
@@ -109,37 +119,50 @@ li.ant-list-item.alpha-background.message-full {
   display: contents !important;
 }
 
+/* Flecha Derecha (Siguiente swipe) */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
   position: absolute !important;
   right: 12px !important;
-  bottom: 24px !important;
+  bottom: 12px !important;
   z-index: 5 !important;
 }
 
+/* Flecha Izquierda (Anterior swipe) */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) {
   position: absolute !important;
-  right: 64px !important;
-  bottom: 24px !important;
+  right: 56px !important;
+  bottom: 12px !important;
   z-index: 5 !important;
 }
 
+/* Estilo redondo translúcido para ambas flechas */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
-  width: 44px !important;
-  height: 44px !important;
-  background: rgba(0, 0, 0, 0.4) !important;
+  width: 38px !important;
+  height: 38px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 50% !important;
   margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]):hover,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]):hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: var(--link-color) !important;
 }
 
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) svg,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
-  width: 20px !important;
-  height: 20px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 /* ==========================================================================
-   4. ENTRADA DE TEXTO DEL CHAT (INPUT INFERIOR)
+   5. BARRA DE ENTRADA DE TEXTO (INPUT INFERIOR)
    ========================================================================== */
 form[class*=rounded-md] {
   -webkit-backdrop-filter: blur(12px) !important;
@@ -154,7 +177,7 @@ form[class*=rounded-md] textarea {
 }
 
 /* ==========================================================================
-   5. TARJETAS, RIBBONS Y TAGS (EFECTO CYBERPUNK)
+   6. TARJETAS, RIBBONS Y TAGS
    ========================================================================== */
 .ant-card,
 .char-card-class {
@@ -212,7 +235,6 @@ form[class*=rounded-md] textarea {
   border-radius: 10% !important;
 }
 
-/* Tags y Cintas cortadas */
 .ant-ribbon,
 .ant-tag {
   font-weight: 700 !important;
@@ -272,7 +294,7 @@ span.fake-ribbon {
 }
 
 /* ==========================================================================
-   6. BOTONES Y ANIMACIONES
+   7. BOTONES
    ========================================================================== */
 button.ant-btn.ant-btn-primary {
   min-height: 40px !important;
@@ -332,7 +354,7 @@ button.ant-btn.ant-btn-primary {
   transition: 0.2s !important;
 }
 
-/* Botón de peligro / Delete con animación */
+/* Botón peligroso con brillo */
 @keyframes danger-glow {
   0% { box-shadow: 0 0 8px -2px rgba(255, 80, 80, 0.4); }
   50% { box-shadow: 0 0 12px 0 rgba(255, 80, 80, 0.8); }
@@ -378,7 +400,7 @@ button.ant-btn.ant-btn-primary {
 }
 
 /* ==========================================================================
-   7. INPUTS, MENÚS, DROPDOWNS Y TOOLTIPS
+   8. INPUTS, MENÚS, DROPDOWNS Y TOOLTIPS
    ========================================================================== */
 .ant-card,
 .ant-form-item .ant-input,
@@ -536,7 +558,7 @@ div.ant-dropdown ul.ant-menu {
 }
 
 /* ==========================================================================
-   8. EFECTO GLITCH Y ANIMACIONES ESPECIALES
+   9. EFECTOS GLITCH Y ANIMACIONES
    ========================================================================== */
 @keyframes throb {
   0%, 100% { transform: scale(1.1); }
@@ -571,17 +593,17 @@ a[href="/"] img:hover {
   92% { text-shadow: 1px 2px 0 red, -1px -2px 0 #0ff, 0 0 5px; }
 }
 
-/* El efecto Glitch (aplicado a bleachbunny o cámbialo a tu usuario) */
-.ant-card:has(a[href*="/users/bleachbunny"]),
-.char-card-class:has(a[href*="/users/bleachbunny"]) {
+/* Efecto glitch en tarjetas */
+.ant-card:has(a[href*="/users/asq41270-droid"]),
+.char-card-class:has(a[href*="/users/asq41270-droid"]) {
   position: relative;
   animation: 4s step-end infinite glitch-box-shadow;
 }
 
-.ant-card:has(a[href*="/users/bleachbunny"])::after,
-.ant-card:has(a[href*="/users/bleachbunny"])::before,
-.char-card-class:has(a[href*="/users/bleachbunny"])::after,
-.char-card-class:has(a[href*="/users/bleachbunny"])::before {
+.ant-card:has(a[href*="/users/asq41270-droid"])::after,
+.ant-card:has(a[href*="/users/asq41270-droid"])::before,
+.char-card-class:has(a[href*="/users/asq41270-droid"])::after,
+.char-card-class:has(a[href*="/users/asq41270-droid"])::before {
   content: '';
   position: absolute;
   top: 0;
@@ -597,31 +619,31 @@ a[href="/"] img:hover {
   opacity: 0;
 }
 
-.ant-card:has(a[href*="/users/bleachbunny"])::before,
-.char-card-class:has(a[href*="/users/bleachbunny"])::before {
+.ant-card:has(a[href*="/users/asq41270-droid"])::before,
+.char-card-class:has(a[href*="/users/asq41270-droid"])::before {
   mix-blend-mode: screen;
   background-color: rgba(255, 0, 0, 0.4);
   animation: 4s step-end infinite digital-scan-anim;
 }
 
-.ant-card:has(a[href*="/users/bleachbunny"])::after,
-.char-card-class:has(a[href*="/users/bleachbunny"])::after {
+.ant-card:has(a[href*="/users/asq41270-droid"])::after,
+.char-card-class:has(a[href*="/users/asq41270-droid"])::after {
   mix-blend-mode: screen;
   background-color: rgba(0, 255, 255, 0.4);
   animation: 4s step-end 40ms infinite digital-scan-anim;
 }
 
-.ant-card a[href*="/users/bleachbunny"],
-.ant-card:has(a[href*="/users/bleachbunny"]) .ant-card-head-title,
-.ant-card:has(a[href*="/users/bleachbunny"]) .ant-card-meta-title a,
-.char-card-class a[href*="/users/bleachbunny"],
-.char-card-class:has(a[href*="/users/bleachbunny"]) .ant-card-head-title,
-.char-card-class:has(a[href*="/users/bleachbunny"]) .ant-card-meta-title a {
+.ant-card a[href*="/users/asq41270-droid"],
+.ant-card:has(a[href*="/users/asq41270-droid"]) .ant-card-head-title,
+.ant-card:has(a[href*="/users/asq41270-droid"]) .ant-card-meta-title a,
+.char-card-class a[href*="/users/asq41270-droid"],
+.char-card-class:has(a[href*="/users/asq41270-droid"]) .ant-card-head-title,
+.char-card-class:has(a[href*="/users/asq41270-droid"]) .ant-card-meta-title a {
   animation: 4s step-end infinite glitch-text-shadow;
 }
 
 /* ==========================================================================
-   9. MISCELÁNEA (TABS, PAGINACIÓN, SWITCHES)
+   10. MISCELÁNEA (TABS, PAGINACIÓN, SWITCHES)
    ========================================================================== */
 .ant-collapse {
   border: none !important;
