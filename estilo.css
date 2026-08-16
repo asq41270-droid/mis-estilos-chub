@@ -109,7 +109,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-avatar {
-  margin: 0 18px 0 0 !important;
+  margin: 0 20px 0 0 !important;
   padding: 0 !important;
   display: flex !important;
   border-radius: 16px 0 0 16px !important;
@@ -118,27 +118,21 @@ li.ant-list-item.alpha-background.message-full {
   width: clamp(120px, 16vw, 160px) !important;
   min-width: 110px !important;
   height: 100% !important;
-  background: rgba(10, 12, 18, 0.45) !important;
-  backdrop-filter: blur(20px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .ant-list-item-meta-avatar .ant-image {
   width: 100% !important;
   height: 100% !important;
   display: flex !important;
-  align-items: flex-start !important;
-  justify-content: center !important;
+  overflow: hidden !important;
 }
 
 .ant-list-item-meta-avatar .ant-image img {
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
   object-fit: cover !important;
-  object-position: top center !important;
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, rgba(0, 0, 0, 0.3) 90%, transparent 100%) !important;
-  mask-image: linear-gradient(to bottom, #000 70%, rgba(0, 0, 0, 0.3) 90%, transparent 100%) !important;
+  object-position: center 20% !important;
+  transform: scale(1.15) !important;
   border-radius: 16px 0 0 16px !important;
   display: block !important;
 }
