@@ -109,14 +109,14 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-avatar {
-  margin: 0 20px 0 0 !important;
+  margin: 0 16px 0 0 !important;
   padding: 0 !important;
   display: flex !important;
   border-radius: 16px 0 0 16px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
-  width: clamp(120px, 16vw, 160px) !important;
-  min-width: 110px !important;
+  width: clamp(100px, 14vw, 140px) !important;
+  min-width: 100px !important;
   height: 100% !important;
 }
 
@@ -131,8 +131,8 @@ li.ant-list-item.alpha-background.message-full {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: center 20% !important;
-  transform: scale(1.15) !important;
+  object-position: center !important;
+  transform: scale(1.06) !important;
   border-radius: 16px 0 0 16px !important;
   display: block !important;
 }
