@@ -1,0 +1,68 @@
+/* ===================================================
+   TEMA OSCURO PERSONALIZADO PARA CHUB AI
+   =================================================== */
+
+/* 1. Fondo de toda la pantalla del chat */
+.abs-100-dvh {
+  background-color: #121318 !important;
+  background-image: linear-gradient(rgba(18, 19, 24, 0.75), rgba(18, 19, 24, 0.95)), 
+                    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200') !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* 2. Burbuja de mensajes (Cajas de texto) */
+.ant-list-item.alpha-background {
+  background-color: rgba(26, 29, 38, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  margin-bottom: 14px !important;
+}
+
+/* 3. Nombre del personaje / Usuario */
+.ant-list-item-meta-title a {
+  color: #ff9f43 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Avatar (Foto de perfil redonda con borde) */
+.ant-list-item-meta-avatar img {
+  border-radius: 50% !important;
+  border: 2px solid #ff9f43 !important;
+}
+
+/* 5. Texto normal dentro del mensaje */
+.msg-mkdn-container {
+  color: #f1f2f6 !important;
+  font-size: 1.03rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 6. Acciones / Pensamientos (*en cursiva*) */
+.msg-mkdn-container em {
+  color: #a4b0be !important;
+  font-style: italic;
+}
+
+/* 7. Diálogos o énfasis (**en negrita**) */
+.msg-mkdn-container strong {
+  color: #feca57 !important;
+  font-weight: bold;
+}
+
+/* 8. Barra inferior donde escribes tu mensaje */
+.chat-input-container form {
+  background-color: rgba(20, 22, 30, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 14px !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* 9. Botón de enviar mensaje */
+.chat-input-container button {
+  color: #ff9f43 !important;
+}
