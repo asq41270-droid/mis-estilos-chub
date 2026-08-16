@@ -86,7 +86,8 @@ li.ant-list-item {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   margin-bottom: 1rem !important;
   border-block-start: none !important;
-  max-height: 420px !important;
+  min-height: 160px !important;
+  max-height: 330px !important;
   overflow: hidden !important;
   position: relative !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
@@ -102,7 +103,8 @@ li.ant-list-item.alpha-background.message-full {
   flex: 1 !important;
   align-items: stretch !important;
   height: 100% !important;
-  max-height: 420px !important;
+  min-height: 160px !important;
+  max-height: 330px !important;
   overflow: hidden !important;
 }
 
@@ -113,8 +115,8 @@ li.ant-list-item.alpha-background.message-full {
   border-radius: 16px 0 0 16px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
-  width: 15vw !important;
-  min-width: 100px !important;
+  width: clamp(130px, 18vw, 175px) !important;
+  min-width: 120px !important;
   height: 100% !important;
 }
 
@@ -142,7 +144,7 @@ li.ant-list-item.alpha-background.message-full {
   padding: 1rem 1.2rem 1.6rem 0 !important;
   flex: 1 !important;
   height: 100% !important;
-  max-height: 420px !important;
+  max-height: 330px !important;
   overflow-y: auto !important;
   scroll-behavior: smooth !important;
 }
@@ -155,8 +157,6 @@ li.ant-list-item.alpha-background.message-full {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 4px;
 }
-
-.msg-mkdn-container,
 .msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
   color: #f5c8c1 !important;
