@@ -138,7 +138,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content {
-  padding: 1rem 1.2rem 3rem 0 !important;
+  padding: 1rem 1.2rem 1.6rem 0 !important;
   flex: 1 !important;
   height: 100% !important;
   max-height: 420px !important;
@@ -155,12 +155,17 @@ li.ant-list-item.alpha-background.message-full {
   border-radius: 4px;
 }
 
-.msg-mkdn-container {
+.msg-mkdn-container,
+.msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
-  color: #FFF2EB !important;
+  color: #f5c8c1 !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.msg-mkdn-container p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .msg-mkdn-container em {
@@ -169,7 +174,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .msg-mkdn-container strong {
-  color: #FFE2D1 !important;
+  color: #FFF2EB !important;
   font-weight: 700 !important;
 }
 
