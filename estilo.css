@@ -37,6 +37,12 @@ div.ant-col-md-3:has(+ .chat-layout-bigbox) {
 /* ==========================================================================
    3. MENSAJES Y AVATAR FIJO (CORRECCIÓN DEL ERROR DE DESPLAZAMIENTO)
    ========================================================================== */
+.chat-area-row,
+#chat-messages {
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+}
+
 li.ant-list-item {
   display: flex !important;
   align-items: stretch !important;
@@ -103,11 +109,12 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content {
-  padding: 1rem 1.2rem 2.5rem 0 !important;
+  padding: 1rem 1.2rem 3rem 0 !important;
   flex: 1 !important;
   height: 100% !important;
   max-height: 420px !important;
   overflow-y: auto !important;
+  overscroll-behavior-y: contain !important;
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar {
@@ -119,9 +126,6 @@ li.ant-list-item.alpha-background.message-full {
   border-radius: 4px;
 }
 
-/* ==========================================================================
-   4. FLECHAS DE PASAR Y REGENERAR MENSAJES (POSICIÓN FIJA)
-   ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
@@ -130,46 +134,49 @@ li.ant-list-item.alpha-background.message-full {
   display: contents !important;
 }
 
-/* Flecha Derecha (Siguiente swipe) */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
   position: absolute !important;
-  right: 12px !important;
-  bottom: 12px !important;
+  right: 14px !important;
+  bottom: 10px !important;
   z-index: 5 !important;
 }
 
-/* Flecha Izquierda (Anterior swipe) */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) {
   position: absolute !important;
-  right: 56px !important;
-  bottom: 12px !important;
+  right: 52px !important;
+  bottom: 10px !important;
   z-index: 5 !important;
 }
 
-/* Estilo redondo translúcido para ambas flechas */
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
-  width: 38px !important;
-  height: 38px !important;
-  background: rgba(0, 0, 0, 0.5) !important;
+  width: 32px !important;
+  height: 28px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 50% !important;
+  border-radius: 6px !important;
   margin: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
 
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]):hover,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]):hover {
-  background: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
   border-color: var(--link-color) !important;
+  color: var(--link-color) !important;
+  transform: translateY(-1px) !important;
 }
 
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) svg,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 14px !important;
+  height: 14px !important;
 }
 
 /* ==========================================================================
