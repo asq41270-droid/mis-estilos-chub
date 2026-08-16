@@ -46,8 +46,8 @@ li.ant-list-item {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   margin-bottom: 1rem !important;
   border-block-start: none !important;
-  /* CORRECCIÓN: overflow: hidden evita que la tarjeta haga scroll interno y se descoloque */
-  overflow: hidden !important; 
+  max-height: 420px !important;
+  overflow: hidden !important;
   position: relative !important;
 }
 
@@ -65,37 +65,30 @@ li.ant-list-item.alpha-background.message-full {
 .ant-list-item-meta {
   display: flex !important;
   flex: 1 !important;
-  align-items: flex-start !important;
+  align-items: stretch !important;
+  height: 100% !important;
+  max-height: 420px !important;
+  overflow: hidden !important;
 }
 
 .ant-list-item-meta-avatar {
-  margin: 0 16px 0 0 !important;
+  margin: 0 20px 0 0 !important;
   padding: 0 !important;
   display: flex !important;
-  align-self: flex-start !important;
-  border-radius: 14px !important;
+  border-radius: 16px 0 0 16px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
+  width: 15vw !important;
+  min-width: 96px !important;
+  height: 100% !important;
 }
 
 .ant-list-item-meta-avatar .ant-image {
-  min-width: 90px !important;
-  width: 120px !important;
-  aspect-ratio: 2 / 3 !important;
-  height: auto !important;
-  display: flex !important;
-  border-radius: 14px !important;
-}
-
-.ant-list-item-meta-avatar .ant-image img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 14px !important;
-  display: block !important;
+  display: flex !important;
 }
 
-/* La imagen del avatar: ajustada al 100% para que nunca deje espacios vacíos */
 .ant-list-item-meta-avatar .ant-image img {
   width: 100% !important;
   height: 100% !important;
@@ -104,16 +97,26 @@ li.ant-list-item.alpha-background.message-full {
   display: block !important;
 }
 
-/* CORRECCIÓN: Desactivar la máscara de clic para evitar que se mueva al tocarla */
 .ant-list-item-meta-avatar .ant-image-mask {
   display: none !important;
   pointer-events: none !important;
 }
 
-/* Contenido del texto del mensaje */
 .ant-list-item-meta-content {
-  padding: 1rem 1.2rem 2.5rem 0 !important; /* Espacio extra abajo para que no choquen las flechas */
-  flex: 1;
+  padding: 1rem 1.2rem 2.5rem 0 !important;
+  flex: 1 !important;
+  height: 100% !important;
+  max-height: 420px !important;
+  overflow-y: auto !important;
+}
+
+.ant-list-item-meta-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ant-list-item-meta-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 /* ==========================================================================
