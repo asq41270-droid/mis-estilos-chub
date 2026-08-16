@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 
 /* ==========================================================================
-   1. VARIABLES GLOBALES DE COLOR
+   1. VARIABLES GLOBALES (COLOR MAESTRO)
    ========================================================================== */
 :root {
+  --bot-color: #FFB085 !important;
   --dark-background-color: #151114 !important;
-  --link-color: #8be9fd !important;
+  --link-color: var(--bot-color) !important;
   --ribbon-color: #19171f !important;
 }
 
@@ -83,7 +84,7 @@ li.ant-list-item {
   -webkit-backdrop-filter: none !important;
   background: #14100C !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 25%, rgba(255, 255, 255, 0.08)) !important;
   margin: 0 auto 1rem auto !important;
   border-block-start: none !important;
   min-height: 210px !important;
@@ -165,10 +166,11 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
+  background: color-mix(in srgb, var(--bot-color) 40%, rgba(255, 255, 255, 0.15)) !important;
   border-radius: 4px;
 }
 
+.msg-mkdn-container,
 .msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
   color: #f5c8c1 !important;
@@ -182,18 +184,18 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .msg-mkdn-container em {
-  color: #FFB085 !important;
+  color: var(--bot-color) !important;
   font-style: italic !important;
 }
 
 .msg-mkdn-container strong {
-  color: #FFF2EB !important;
+  color: color-mix(in srgb, var(--bot-color) 35%, #FFF2EB) !important;
   font-weight: 700 !important;
 }
 
 .ant-list-item-meta-title a {
   font-family: 'Pacifico', cursive !important;
-  color: #FFA07A !important;
+  color: var(--bot-color) !important;
   font-size: 1.25rem !important;
 }
 
@@ -227,9 +229,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
   width: 32px !important;
   height: 28px !important;
   background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(6px) !important;
-  -webkit-backdrop-filter: blur(6px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 30%, rgba(255, 255, 255, 0.15)) !important;
   border-radius: 6px !important;
   margin: 0 !important;
   display: inline-flex !important;
@@ -242,8 +242,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]):hover,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]):hover {
   background: rgba(255, 255, 255, 0.2) !important;
-  border-color: var(--link-color) !important;
-  color: var(--link-color) !important;
+  border-color: var(--bot-color) !important;
+  color: var(--bot-color) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -262,7 +262,7 @@ form[class*=rounded-md],
   -webkit-backdrop-filter: none !important;
   background: #14100C !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 25%, rgba(255, 255, 255, 0.08)) !important;
   padding: 8px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
@@ -274,20 +274,13 @@ textarea.ant-input {
 }
 
 /* ==========================================================================
-   6. TARJETAS, RIBBONS Y TAGS
+   6. COMPONENTES GLOBALES, TARJETAS Y BOTONES
    ========================================================================== */
 .ant-card,
 .char-card-class {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-.ant-card.ant-card-hoverable,
-.char-card-class {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-.ant-card-cover {
-  overflow: hidden;
+  background: rgba(30, 30, 40, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .ant-card.ant-card-hoverable:hover,
@@ -295,99 +288,30 @@ textarea.ant-input {
   transform: rotate(-2deg) scale(1.03);
 }
 
-.ant-card.ant-card-hoverable:hover .ant-card-cover img,
-.char-card-class:hover .ant-card-cover img {
-  transform: scale(1.12);
-}
-
-.ant-card-head {
-  background-color: #19171f !important;
-  border-bottom: none;
-  padding: 12px 16px;
-  border-radius: 12px 12px 0 0;
-}
-
-.ant-card-head-title {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.ant-card-body {
-  color: #ccc;
-  padding: 16px;
-}
-
-.ant-card.not-dismissed {
-  background-color: #2a2a2e !important;
-  border: 1px solid #8be9fd !important;
-}
-
-.ant-card-actions {
-  background-color: #000 !important;
-}
-
-.ant-card-small .ant-avatar,
-.ant-card-small .ant-avatar img {
-  border-radius: 10% !important;
-}
-
-.ant-ribbon,
-.ant-tag {
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
-
 .ant-tag {
   background: rgba(255, 255, 255, 0.5) !important;
   color: #000 !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0.1em 0.5em !important;
-  font-size: 0.6rem !important;
-  transition: background 0.2s, color 0.2s !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
 }
 
-.ant-tag:hover {
-  background: #000 !important;
-  color: #fff !important;
-  cursor: pointer;
-}
-
-.ant-ribbon-placement-end {
-  top: 0 !important;
-  inset-inline-end: -8px !important;
-}
-
 .ant-ribbon {
-  background: var(--link-color) !important;
+  background: var(--bot-color) !important;
   color: #fff !important;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0 10px 0 5px !important;
-  margin-right: -2px;
-  font-size: 10px !important;
-  letter-spacing: 0.5px !important;
-  white-space: nowrap !important;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
 }
 
-.ant-ribbon-text {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.ant-btn-primary {
+  background: rgba(40, 40, 50, 0.6) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-.ant-ribbon-text > span {
-  display: contents !important;
-}
-
-span.fake-ribbon {
-  background-color: #19171f !important;
-  font-size: 0.7rem;
+.ant-btn-primary:hover {
+  border-color: var(--bot-color) !important;
+  color: #fff !important;
+  box-shadow: 0 0 20px -2px var(--bot-color) !important;
 }
 
 /* ==========================================================================
