@@ -64,27 +64,35 @@ li.ant-list-item.alpha-background.message-full {
 
 .ant-list-item-meta {
   display: flex !important;
-  flex: 1;
-  align-items: stretch !important;
-  min-height: 100% !important;
+  flex: 1 !important;
+  align-items: flex-start !important;
 }
 
-/* Contenedor del Avatar lateral fijo */
 .ant-list-item-meta-avatar {
-  margin: 0 20px 0 0 !important;
+  margin: 0 16px 0 0 !important;
   padding: 0 !important;
   display: flex !important;
-  align-self: stretch !important;
-  border-radius: 16px 0 0 16px !important;
+  align-self: flex-start !important;
+  border-radius: 14px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
 }
 
 .ant-list-item-meta-avatar .ant-image {
-  min-width: 96px;
-  width: 15vw !important;
-  height: 100% !important;
+  min-width: 90px !important;
+  width: 120px !important;
+  aspect-ratio: 2 / 3 !important;
+  height: auto !important;
   display: flex !important;
+  border-radius: 14px !important;
+}
+
+.ant-list-item-meta-avatar .ant-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  display: block !important;
 }
 
 /* La imagen del avatar: ajustada al 100% para que nunca deje espacios vacíos */
