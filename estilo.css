@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 
 /* ==========================================================================
-   1. VARIABLES GLOBALES (MODO OSCURO, COLOR MAESTRO Y FUENTES DINÁMICAS)
+   1. VARIABLES GLOBALES (COLOR MAESTRO Y FUENTE UNIFICADA)
    ========================================================================== */
 :root {
   --bot-color: #FFB085 !important;
-  --bot-font-title: 'Pacifico', cursive !important;
-  --bot-font-text: 'Playpen Sans Thai', cursive, sans-serif !important;
-  --dark-background-color: #121216 !important;
+  --bot-font: 'Playpen Sans Thai', cursive, sans-serif !important;
+  --dark-background-color: #151114 !important;
   --link-color: var(--bot-color) !important;
   --ribbon-color: #19171f !important;
 }
@@ -17,7 +16,7 @@ span[class*=quote-color] {
 }
 
 /* ==========================================================================
-   2. EL FONDO DEL CHAT, CABECERA Y SCROLL GENERAL
+   2. EL FONDO DEL CHAT Y SCROLL GENERAL
    ========================================================================== */
 .chub-css-override .ant-layout,
 .chub-css-override .ant-layout-footer,
@@ -50,7 +49,6 @@ div.abs-100-dvh[style*="fixed"],
   position: relative !important;
 }
 
-/* Barra superior, Menú de 3 líneas y Botón de Salir tematizados */
 .ant-row.ant-row-center,
 .ant-row.ant-row-center .ant-col {
   position: relative !important;
@@ -95,7 +93,7 @@ div.abs-100-dvh[style*="fixed"],
 }
 
 /* ==========================================================================
-   3. MENSAJES Y AVATAR LATERAL (MODO OSCURO ELEVADO)
+   3. MENSAJES, AVATAR LATERAL Y SCROLL DE TEXTO
    ========================================================================== */
 @keyframes messageEntrance {
   from { opacity: 0; transform: translateY(6px); }
@@ -204,8 +202,8 @@ li.ant-list-item.alpha-background.message-full {
 
 .msg-mkdn-container,
 .msg-mkdn-container p {
-  font-family: var(--bot-font-text) !important;
-  color: #e4e6eb !important;
+  font-family: var(--bot-font) !important;
+  color: #f5c8c1 !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -235,7 +233,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-title a {
-  font-family: var(--bot-font-title) !important;
+  font-family: var(--bot-font) !important;
   color: var(--bot-color) !important;
   font-size: 1.25rem !important;
 }
