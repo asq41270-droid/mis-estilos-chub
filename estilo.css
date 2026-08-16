@@ -24,32 +24,36 @@ ul.ant-menu-dark,
   box-shadow: none !important;
 }
 
+div.ant-col-xs-0.ant-col-md-3.ant-col-lg-5,
+.ant-row.abs-100-dvh > div.ant-col {
+  display: none !important;
+  pointer-events: none !important;
+  width: 0 !important;
+}
+
 .abs-100-dvh {
   pointer-events: none !important;
 }
 
-div.ant-col-lg-5:has(+ .chat-layout-bigbox) {
-  flex-basis: 12.5% !important;
-  max-width: 12.5% !important;
-  pointer-events: none !important;
-}
-
-div.ant-col-md-3:has(+ .chat-layout-bigbox) {
-  flex-basis: 8.333333% !important;
-  max-width: 8.333333% !important;
-  pointer-events: none !important;
+.chat-layout-bigbox {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  flex: 1 1 100% !important;
 }
 
 .chat-area-row {
+  width: 100vw !important;
+  height: 100% !important;
   pointer-events: auto !important;
   overflow-y: auto !important;
   scroll-behavior: smooth;
 }
 
 #chat-messages {
+  width: 100% !important;
+  max-width: 850px !important;
+  margin: 0 auto !important;
   pointer-events: auto !important;
-  overflow-y: auto !important;
-  scroll-behavior: smooth;
 }
 
 /* ==========================================================================
