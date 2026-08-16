@@ -82,16 +82,16 @@ li.ant-list-item {
   padding: 0 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: #14100C !important;
+  background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.06)) !important;
   margin: 0 auto 1rem auto !important;
   border-block-start: none !important;
   min-height: 210px !important;
   max-height: 420px !important;
   overflow: hidden !important;
   position: relative !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
   width: 100% !important;
 }
 
@@ -166,14 +166,14 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: color-mix(in srgb, var(--bot-color) 35%, rgba(255, 255, 255, 0.15)) !important;
   border-radius: 4px;
 }
 
 .msg-mkdn-container,
 .msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
-  color: #f5c8c1 !important;
+  color: color-mix(in srgb, var(--bot-color) 12%, #e5e8ec) !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -184,12 +184,12 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .msg-mkdn-container em {
-  color: var(--bot-color) !important;
+  color: color-mix(in srgb, var(--bot-color) 75%, #ffffff) !important;
   font-style: italic !important;
 }
 
 .msg-mkdn-container strong {
-  color: #FFF2EB !important;
+  color: color-mix(in srgb, var(--bot-color) 20%, #ffffff) !important;
   font-weight: 700 !important;
 }
 
@@ -199,9 +199,6 @@ li.ant-list-item.alpha-background.message-full {
   font-size: 1.25rem !important;
 }
 
-/* ==========================================================================
-   4. FLECHAS DE PASAR Y REGENERAR MENSAJES
-   ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
@@ -228,8 +225,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]),
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
   width: 32px !important;
   height: 28px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 25%, rgba(255, 255, 255, 0.12)) !important;
   border-radius: 6px !important;
   margin: 0 !important;
   display: inline-flex !important;
@@ -241,7 +238,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
 
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]):hover,
 button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]):hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.1)) !important;
   border-color: var(--bot-color) !important;
   color: var(--bot-color) !important;
   transform: translateY(-1px) !important;
@@ -253,16 +250,13 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   height: 14px !important;
 }
 
-/* ==========================================================================
-   5. BARRA DE ENTRADA DE TEXTO (INPUT INFERIOR)
-   ========================================================================== */
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: #14100C !important;
+  background: color-mix(in srgb, var(--bot-color) 6%, #12100E) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.06)) !important;
   padding: 8px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
