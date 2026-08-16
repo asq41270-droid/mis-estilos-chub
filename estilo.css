@@ -1,68 +1,315 @@
-/* ===================================================
-   TEMA OSCURO PERSONALIZADO PARA CHUB AI
-   =================================================== */
-
-/* 1. Fondo de toda la pantalla del chat */
-.abs-100-dvh {
-  background-color: #121318 !important;
-  background-image: linear-gradient(rgba(18, 19, 24, 0.75), rgba(18, 19, 24, 0.95)), 
-                    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200') !important;
-  background-size: cover !important;
-  background-position: center !important;
+/* ==========================================================================
+   1. VARIABLES GLOBALES Y PALETA DE COLOR
+   ========================================================================== */
+:root {
+  --dark-background-color: #151114 !important;
+  --link-color: #8be9fd !important; /* Color principal de acento */
+  --ribbon-color: #19171f !important;
 }
 
-/* 2. Burbuja de mensajes (Cajas de texto) */
-.ant-list-item.alpha-background {
-  background-color: rgba(26, 29, 38, 0.8) !important;
+/* ==========================================================================
+   2. ESTRUCTURA Y MENSAJES DEL CHAT
+   ========================================================================== */
+/* Ancho del chat en pantalla grande */
+div.ant-col-lg-5:has(+ .chat-layout-bigbox) {
+  flex-basis: 12.5% !important;
+  max-width: 12.5% !important;
+}
+div.ant-col-md-3:has(+ .chat-layout-bigbox) {
+  flex-basis: 8.333333% !important;
+  max-width: 8.333333% !important;
+}
+
+/* Burbuja del mensaje */
+li.ant-list-item {
+  display: flex !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  background: rgba(30, 30, 40, 0.5) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border-radius: 12px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-  margin-bottom: 14px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+  border-left: none !important;
+  border-block-start: none !important;
+  max-height: 1024px !important;
+  overflow-y: auto !important;
 }
 
-/* 3. Nombre del personaje / Usuario */
-.ant-list-item-meta-title a {
-  color: #ff9f43 !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.5px;
+.ant-list-item-meta {
+  display: flex !important;
+  flex: 1;
+  align-items: stretch !important;
 }
 
-/* 4. Avatar (Foto de perfil redonda con borde) */
-.ant-list-item-meta-avatar img {
-  border-radius: 50% !important;
-  border: 2px solid #ff9f43 !important;
+/* Avatar lateral completo estilo tarjeta */
+.ant-list-item-meta-avatar {
+  margin: 0 20px 0 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  border-radius: 16px 0 0 16px !important;
+  overflow: hidden !important;
 }
 
-/* 5. Texto normal dentro del mensaje */
+.ant-list-item-meta-avatar .ant-image {
+  min-width: 96px;
+  width: 15vw !important;
+  height: 100% !important;
+}
+
+.ant-list-item-meta-avatar .ant-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 16px 0 0 16px !important;
+}
+
+.ant-list-item-meta-content {
+  padding: 1rem 1rem 1rem 0 !important;
+}
+
+.ant-list-item.alpha-background.message-full {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-left: none !important;
+}
+
+/* Texto del chat (Markdown, diálogos y acciones) */
 .msg-mkdn-container {
-  color: #f1f2f6 !important;
-  font-size: 1.03rem !important;
+  color: #e0e0e0 !important;
+  font-size: 1rem !important;
   line-height: 1.6 !important;
 }
 
-/* 6. Acciones / Pensamientos (*en cursiva*) */
 .msg-mkdn-container em {
-  color: #a4b0be !important;
+  color: #b0a8b9 !important;
   font-style: italic;
 }
 
-/* 7. Diálogos o énfasis (**en negrita**) */
 .msg-mkdn-container strong {
-  color: #feca57 !important;
-  font-weight: bold;
+  color: var(--link-color) !important;
+  font-weight: 700;
 }
 
-/* 8. Barra inferior donde escribes tu mensaje */
-.chat-input-container form {
-  background-color: rgba(20, 22, 30, 0.9) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 14px !important;
+/* Botones de navegación de mensajes (< y >) abajo a la derecha */
+#chat-messages .message-full {
+  position: relative !important;
+}
+
+#chat-messages .message-full > div:has(> button.message-control-buttons) {
+  display: contents !important;
+}
+
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
+  position: absolute !important;
+  right: 12px !important;
+  bottom: 24px !important;
+  z-index: 5 !important;
+}
+
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) {
+  position: absolute !important;
+  right: 64px !important;
+  bottom: 24px !important;
+  z-index: 5 !important;
+}
+
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]),
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+}
+
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) svg,
+button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Barra de entrada de texto inferior */
+form[class*=rounded-md] {
+  background: rgba(30, 30, 40, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 8px !important;
+}
+
+form[class*=rounded-md] textarea,
+textarea.ant-input {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   3. CABECERA, MENÚS Y COMPONENTES GLOBALES
+   ========================================================================== */
+.chub-css-override .ant-layout,
+.chub-css-override .ant-layout-footer,
+header.ant-layout-header,
+ul.ant-menu-dark,
+.ant-menu-overflow-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Botones principales con efecto cristal */
+.ant-btn-primary {
+  background: rgba(40, 40, 50, 0.6) !important;
   backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  min-height: 36px !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.2s !important;
 }
 
-/* 9. Botón de enviar mensaje */
-.chat-input-container button {
-  color: #ff9f43 !important;
+.ant-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  border-color: var(--link-color) !important;
+  color: #fff !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 20px -2px var(--link-color) !important;
+}
+
+/* Botones por defecto */
+.ant-btn-default {
+  background: transparent !important;
+  min-height: 36px;
+  color: #ccc !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.ant-btn-default:hover {
+  transform: translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+/* Botón de peligro (animación pulso rojo) */
+@keyframes danger-glow {
+  0%, 100% { box-shadow: 0 0 8px -2px rgba(255, 80, 80, 0.4); }
+  50% { box-shadow: 0 0 12px 0 rgba(255, 80, 80, 0.8); }
+}
+
+.ant-btn-dangerous {
+  background: rgba(80, 20, 20, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #ffc2c2 !important;
+  border: 1px solid rgba(255, 80, 80, 0.6) !important;
+  animation: danger-glow 2.5s infinite ease-in-out !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-btn-dangerous:hover {
+  transform: translateY(-2px) !important;
+  background: rgba(120, 30, 30, 0.8) !important;
+  box-shadow: 0 0 15px 0 rgba(255, 80, 80, 0.9) !important;
+}
+
+/* ==========================================================================
+   4. TARJETAS DE PERSONAJES Y ESTILO CYBERPUNK
+   ========================================================================== */
+.ant-card,
+.char-card-class {
+  background: rgba(30, 30, 40, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Inclinación 3D al pasar el cursor */
+.ant-card.ant-card-hoverable:hover,
+.char-card-class:hover {
+  transform: rotate(-2deg) scale(1.03) !important;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.ant-card.ant-card-hoverable:hover .ant-card-cover img,
+.char-card-class:hover .ant-card-cover img {
+  transform: scale(1.12);
+}
+
+/* Etiquetas y cintas poligonales */
+.ant-tag {
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #000 !important;
+  border: none !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+}
+
+.ant-tag:hover {
+  background: #000 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.ant-ribbon {
+  background: var(--link-color) !important;
+  color: #fff !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+/* ==========================================================================
+   5. EFECTO GLITCH (CONFIGURADO PARA TU USUARIO)
+   ========================================================================== */
+@keyframes glitch-box-shadow {
+  0%, 100%, 90%, 93% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
+  91% { box-shadow: 3px 2px 0 red, -3px -2px 0 #0ff, 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
+  92% { box-shadow: 2px -1px 0 red, -2px 1px 0 #0ff, 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
+}
+
+@keyframes glitch-text-shadow {
+  0%, 100%, 90%, 93% { text-shadow: none; }
+  91% { text-shadow: -2px 0 0 red, 2px 0 0 #0ff, 0 0 5px; }
+  92% { text-shadow: 1px 2px 0 red, -1px -2px 0 #0ff, 0 0 5px; }
+}
+
+/* Aplica el glitch a tus propias tarjetas */
+.ant-card:has(a[href*="/users/asq41270-droid"]),
+.char-card-class:has(a[href*="/users/asq41270-droid"]) {
+  position: relative;
+  animation: 4s step-end infinite glitch-box-shadow;
+}
+
+.ant-card a[href*="/users/asq41270-droid"],
+.char-card-class a[href*="/users/asq41270-droid"] {
+  animation: 4s step-end infinite glitch-text-shadow;
+}
+
+/* ==========================================================================
+   6. MENÚS DESPLEGABLES, SELECTORES Y TOOLTIPS
+   ========================================================================== */
+.ant-select-dropdown,
+.ant-menu-sub.ant-menu-vertical,
+div.ant-dropdown ul.ant-menu {
+  background: rgba(30, 30, 40, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+}
+
+.ant-tooltip-inner {
+  background: rgba(40, 40, 50, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  color: #e0e0e0 !important;
 }
