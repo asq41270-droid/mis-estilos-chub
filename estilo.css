@@ -87,7 +87,7 @@ li.ant-list-item {
   margin-bottom: 1rem !important;
   border-block-start: none !important;
   min-height: 160px !important;
-  max-height: 330px !important;
+  max-height: 350px !important;
   overflow: hidden !important;
   position: relative !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
@@ -104,19 +104,19 @@ li.ant-list-item.alpha-background.message-full {
   align-items: stretch !important;
   height: 100% !important;
   min-height: 160px !important;
-  max-height: 330px !important;
+  max-height: 350px !important;
   overflow: hidden !important;
 }
 
 .ant-list-item-meta-avatar {
-  margin: 0 20px 0 0 !important;
+  margin: 0 16px 0 0 !important;
   padding: 0 !important;
   display: flex !important;
   border-radius: 16px 0 0 16px !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
-  width: clamp(130px, 18vw, 175px) !important;
-  min-width: 120px !important;
+  width: clamp(115px, 15vw, 150px) !important;
+  min-width: 110px !important;
   height: 100% !important;
 }
 
@@ -124,13 +124,15 @@ li.ant-list-item.alpha-background.message-full {
   width: 100% !important;
   height: 100% !important;
   display: flex !important;
+  overflow: hidden !important;
 }
 
 .ant-list-item-meta-avatar .ant-image img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: center !important;
+  object-position: center 20% !important;
+  transform: scale(1.18) !important;
   border-radius: 16px 0 0 16px !important;
   display: block !important;
 }
@@ -141,10 +143,10 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content {
-  padding: 1rem 1.2rem 1.6rem 0 !important;
+  padding: 0.9rem 1.2rem 1.4rem 0 !important;
   flex: 1 !important;
   height: 100% !important;
-  max-height: 330px !important;
+  max-height: 350px !important;
   overflow-y: auto !important;
   scroll-behavior: smooth !important;
 }
@@ -157,6 +159,7 @@ li.ant-list-item.alpha-background.message-full {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 4px;
 }
+
 .msg-mkdn-container p {
   font-family: 'Playpen Sans Thai', cursive, sans-serif !important;
   color: #f5c8c1 !important;
