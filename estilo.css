@@ -79,18 +79,18 @@ li.ant-list-item {
   display: flex !important;
   align-items: stretch !important;
   padding: 0 !important;
-  backdrop-filter: blur(20px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
-  background: rgba(18, 20, 28, 0.65) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  background: rgba(12, 14, 20, 0.82) !important;
   border-radius: 16px !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   margin: 0 auto 1rem auto !important;
   border-block-start: none !important;
-  min-height: 160px !important;
-  max-height: 350px !important;
+  min-height: 185px !important;
+  max-height: 385px !important;
   overflow: hidden !important;
   position: relative !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
   width: 100% !important;
 }
 
