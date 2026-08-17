@@ -50,7 +50,7 @@ div.abs-100-dvh[style*="fixed"],
   overflow-x: hidden !important;
 }
 
-.ant-row.ant-row-center {
+.chat-layout-bigbox > .ant-row.ant-row-center {
   background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -71,7 +71,7 @@ div.abs-100-dvh[style*="fixed"],
   justify-content: center !important;
 }
 
-.ant-row.ant-row-center .ant-col {
+.chat-layout-bigbox > .ant-row.ant-row-center .ant-col {
   display: flex !important;
   width: 100% !important;
   height: 100% !important;
@@ -83,7 +83,7 @@ div.abs-100-dvh[style*="fixed"],
   box-sizing: border-box !important;
 }
 
-.ant-row.ant-row-center .center.items-center {
+.chat-layout-bigbox > .ant-row.ant-row-center .center.items-center {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -92,7 +92,7 @@ div.abs-100-dvh[style*="fixed"],
   min-width: 0 !important;
 }
 
-.ant-row.ant-row-center .center.items-center > div {
+.chat-layout-bigbox > .ant-row.ant-row-center .center.items-center > div {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -100,8 +100,8 @@ div.abs-100-dvh[style*="fixed"],
   height: 100% !important;
 }
 
-.ant-row.ant-row-center button,
-.ant-row.ant-row-center .ant-btn {
+.chat-layout-bigbox > .ant-row.ant-row-center button,
+.chat-layout-bigbox > .ant-row.ant-row-center .ant-btn {
   position: relative !important;
   z-index: 50 !important;
   pointer-events: auto !important;
@@ -123,13 +123,13 @@ div.abs-100-dvh[style*="fixed"],
   transition: all 0.2s ease !important;
 }
 
-.ant-row.ant-row-center button:hover,
-.ant-row.ant-row-center .ant-btn:hover {
+.chat-layout-bigbox > .ant-row.ant-row-center button:hover,
+.chat-layout-bigbox > .ant-row.ant-row-center .ant-btn:hover {
   background: color-mix(in srgb, var(--bot-color) 15%, transparent) !important;
 }
 
-.ant-row.ant-row-center svg,
-.ant-row.ant-row-center .anticon {
+.chat-layout-bigbox > .ant-row.ant-row-center svg,
+.chat-layout-bigbox > .ant-row.ant-row-center .anticon {
   color: var(--bot-color) !important;
   font-size: 1.15rem !important;
   display: inline-flex !important;
@@ -358,7 +358,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA (UNIFICADA CON BORDES REDONDEADOS Y SIN SEGUNDO FONDO)
+   5. BARRA DE ENTRADA (RESTAURADA, CENTRADA Y CON BORDES REDONDEADOS)
    ========================================================================== */
 .chat-input-container {
   padding-bottom: 16px !important;
@@ -367,9 +367,22 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .chat-input-container .ant-row,
+.chat-input-container .ant-row.ant-row-center {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 850px !important;
+}
+
 .chat-input-container .ant-col,
 .chat-input-container .rounded-md,
 .chat-input-container div[class*="shadow-lg"] {
@@ -387,14 +400,15 @@ form[class*=rounded-md],
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border-radius: 16px !important;
-  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   width: 100% !important;
   max-width: 850px !important;
   margin: 0 auto !important;
-  padding: 6px 10px !important;
+  padding: 6px 12px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
+  display: block !important;
 }
 
 .chat-input-container form:focus-within {
@@ -403,9 +417,17 @@ form[class*=rounded-md],
 }
 
 .chat-input-container .d-flex,
+.chat-input-container .d-flex.align-center {
+  display: flex !important;
+  align-items: center !important;
+  background: transparent !important;
+  width: 100% !important;
+}
+
 .chat-input-container .stack-buttons,
 .chat-input-container .no-hover-bg-color {
   background: transparent !important;
+  height: auto !important;
 }
 
 form[class*=rounded-md] textarea,
@@ -417,6 +439,8 @@ textarea.ant-input {
   outline: none !important;
   font-size: 1rem !important;
   padding: 6px 8px !important;
+  resize: none !important;
+  flex: 1 !important;
 }
 
 .chat-input-container button {
