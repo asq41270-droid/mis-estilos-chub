@@ -57,7 +57,7 @@ div.abs-100-dvh[style*="fixed"],
   border-radius: 0px !important;
   width: 100% !important;
   max-width: 100% !important;
-  margin: 0 0 14px 0 !important;
+  margin: 0 !important;
   padding: 0 16px !important;
   height: 52px !important;
   min-height: 52px !important;
@@ -143,7 +143,7 @@ div.abs-100-dvh[style*="fixed"],
   pointer-events: auto !important;
   overflow-y: auto !important;
   scroll-behavior: smooth;
-  padding-top: 6px !important;
+  padding-top: 24px !important;
 }
 
 #chat-messages {
@@ -151,6 +151,11 @@ div.abs-100-dvh[style*="fixed"],
   max-width: 850px !important;
   margin: 0 auto !important;
   pointer-events: auto !important;
+  padding-bottom: 12px !important;
+}
+
+#chat-messages .message-full:first-child {
+  margin-top: 6px !important;
 }
 
 /* ==========================================================================
@@ -167,10 +172,10 @@ li.ant-list-item {
   padding: 0 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: #14100C !important;
+  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  margin: 0 auto 1rem auto !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
+  margin: 0 auto 1.2rem auto !important;
   border-block-start: none !important;
   min-height: 210px !important;
   max-height: 420px !important;
@@ -243,7 +248,7 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 .ant-list-item-meta-content {
-  padding: 1rem 1.2rem 3.2rem 0.5rem !important;
+  padding: 1rem 1.2rem 3.4rem 0.5rem !important;
   flex: 1 !important;
   height: 100% !important;
   max-height: 420px !important;
@@ -305,66 +310,65 @@ li.ant-list-item.alpha-background.message-full {
 }
 
 /* ==========================================================================
-   4. FLECHAS DE PASAR MENSAJES (REDONDAS, SÓLIDAS Y MÁS GRANDES)
+   4. FLECHAS DE PASAR Y REGENERAR MENSAJES
    ========================================================================== */
 #chat-messages .message-full {
   position: relative !important;
 }
 
-#chat-messages .message-full > div:has(> button.message-control-buttons) {
-  display: contents !important;
-}
-
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
+.sc-cyZbeP {
   position: absolute !important;
-  right: 14px !important;
-  bottom: 12px !important;
-  z-index: 5 !important;
-}
-
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) {
-  position: absolute !important;
-  right: 58px !important;
-  bottom: 12px !important;
-  z-index: 5 !important;
-}
-
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]),
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) {
-  width: 38px !important;
-  height: 38px !important;
-  background: #25252D !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 50% !important;
+  right: 18px !important;
+  bottom: 14px !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sc-cyZbeP button.ant-btn,
+button.message-control-buttons:has(svg[data-icon=right]),
+button.message-control-buttons:has(svg[data-icon=left]) {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  border-radius: 50% !important;
+  background: #222228 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: var(--bot-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5) !important;
-  color: var(--bot-color) !important;
 }
 
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]):hover,
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]):hover {
-  background: #2E2E38 !important;
+.sc-cyZbeP button.ant-btn:hover,
+button.message-control-buttons:has(svg[data-icon=right]):hover,
+button.message-control-buttons:has(svg[data-icon=left]):hover {
+  background: #2D2D36 !important;
   border-color: var(--bot-color) !important;
   color: #ffffff !important;
   transform: scale(1.08) !important;
 }
 
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=left]) svg,
-button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
+.sc-cyZbeP svg,
+button.message-control-buttons:has(svg[data-icon=right]) svg,
+button.message-control-buttons:has(svg[data-icon=left]) svg {
   width: 16px !important;
   height: 16px !important;
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA (DOBLE FONDO VISIBLE: DOCK EXTERIOR + CAJA INTERIOR)
+   5. BARRA DE ENTRADA (UNA SOLA PIEZA LIMPIA, CENTRADA Y REDONDEADA)
    ========================================================================== */
 .chat-input-container {
-  padding-bottom: 18px !important;
-  padding-top: 6px !important;
+  padding-bottom: 20px !important;
+  padding-top: 8px !important;
   background: transparent !important;
   display: flex !important;
   justify-content: center !important;
@@ -372,7 +376,8 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   box-sizing: border-box !important;
 }
 
-.chat-input-container .ant-row {
+.chat-input-container .ant-row,
+.chat-input-container .ant-col {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -384,36 +389,27 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   max-width: 850px !important;
 }
 
-/* 1. Fondo exterior de atrás (Dock gris elevado) */
-.chat-input-container .ant-col {
-  background: #23232A !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
-  width: 100% !important;
-  max-width: 850px !important;
-  margin: 0 auto !important;
-  padding: 6px !important;
-  box-sizing: border-box !important;
-}
-
-/* 2. Fondo interior de adelante (Caja oscura donde se escribe) */
-.chat-input-container form,
-form.rounded-top,
-form[class*=rounded-md] {
-  background: #14100C !important;
-  border-radius: 12px !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
-  padding: 4px 10px !important;
-  margin: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
 .chat-input-container .rounded-md,
 .chat-input-container div[class*="shadow-lg"] {
   display: none !important;
+  height: 0 !important;
+}
+
+form.rounded-top,
+form[class*=rounded-md],
+.chat-input-container form {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 100% !important;
+  max-width: 850px !important;
+  margin: 0 auto !important;
+  padding: 6px 12px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 .chat-input-container .d-flex,
