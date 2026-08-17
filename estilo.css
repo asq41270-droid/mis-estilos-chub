@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 
 /* ==========================================================================
-   1. VARIABLES GLOBALES (COLOR MAESTRO Y FUENTE UNIFICADA)
+   1. VARIABLES GLOBALES (MODO OSCURO, COLOR MAESTRO Y FUENTE)
    ========================================================================== */
 :root {
   --bot-color: #FFB085 !important;
   --bot-font: 'Playpen Sans Thai', cursive, sans-serif !important;
-  --dark-background-color: #151114 !important;
+  --dark-background-color: #121216 !important;
   --link-color: var(--bot-color) !important;
   --ribbon-color: #19171f !important;
 }
@@ -16,7 +16,7 @@ span[class*=quote-color] {
 }
 
 /* ==========================================================================
-   2. EL FONDO DEL CHAT Y SCROLL GENERAL
+   2. EL FONDO DEL CHAT Y CABECERA TEMATIZADA
    ========================================================================== */
 .chub-css-override .ant-layout,
 .chub-css-override .ant-layout-footer,
@@ -49,7 +49,20 @@ div.abs-100-dvh[style*="fixed"],
   position: relative !important;
 }
 
-.ant-row.ant-row-center,
+/* Barra superior en modo oscuro (Botón de salir, menú 3 líneas y opciones) */
+.ant-row.ant-row-center {
+  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
+  border-radius: 14px !important;
+  max-width: 850px !important;
+  margin: 10px auto 6px auto !important;
+  padding: 6px 14px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+  position: relative !important;
+  z-index: 50 !important;
+  pointer-events: auto !important;
+}
+
 .ant-row.ant-row-center .ant-col {
   position: relative !important;
   z-index: 50 !important;
@@ -69,7 +82,7 @@ div.abs-100-dvh[style*="fixed"],
 .ant-row.ant-row-center button:hover,
 .ant-row.ant-row-center .ant-btn:hover {
   background: color-mix(in srgb, var(--bot-color) 15%, transparent) !important;
-  transform: scale(1.08) !important;
+  border-radius: 8px !important;
 }
 
 .ant-row.ant-row-center svg,
@@ -93,7 +106,7 @@ div.abs-100-dvh[style*="fixed"],
 }
 
 /* ==========================================================================
-   3. MENSAJES, AVATAR LATERAL Y SCROLL DE TEXTO
+   3. MENSAJES Y AVATAR LATERAL (SIN DOBLE BORDE)
    ========================================================================== */
 @keyframes messageEntrance {
   from { opacity: 0; transform: translateY(6px); }
@@ -121,7 +134,7 @@ li.ant-list-item {
 }
 
 li.ant-list-item.alpha-background.message-full {
-  border-left: none !important;
+  border: none !important;
   padding: 0 !important;
 }
 
@@ -133,6 +146,7 @@ li.ant-list-item.alpha-background.message-full {
   min-height: 210px !important;
   max-height: 420px !important;
   overflow: hidden !important;
+  border: none !important;
 }
 
 .ant-list-item-meta-avatar {
@@ -148,6 +162,7 @@ li.ant-list-item.alpha-background.message-full {
   position: relative !important;
   pointer-events: none !important;
   cursor: default !important;
+  border: none !important;
 }
 
 .ant-list-item-meta-avatar .ant-image {
@@ -156,6 +171,7 @@ li.ant-list-item.alpha-background.message-full {
   display: flex !important;
   overflow: hidden !important;
   pointer-events: none !important;
+  border: none !important;
 }
 
 .ant-list-item-meta-avatar .ant-image img {
@@ -170,6 +186,7 @@ li.ant-list-item.alpha-background.message-full {
   display: block !important;
   pointer-events: none !important;
   cursor: default !important;
+  border: none !important;
 }
 
 .ant-list-item-meta-avatar .ant-image-mask {
@@ -184,6 +201,7 @@ li.ant-list-item.alpha-background.message-full {
   max-height: 420px !important;
   overflow-y: auto !important;
   scroll-behavior: smooth !important;
+  border: none !important;
 }
 
 .ant-list-item-meta-content::-webkit-scrollbar {
@@ -293,30 +311,44 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA RECTA (SIN BORDES REDONDEADOS)
+   5. BARRA DE ENTRADA (CENTRADA, CON BORDES REDONDEADOS Y ESPACIO ABAJO)
    ========================================================================== */
+.chat-input-container {
+  padding-bottom: 14px !important;
+  background: transparent !important;
+}
+
+.chat-input-container .ant-col {
+  max-width: 850px !important;
+  margin: 0 auto !important;
+}
+
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
-  border-radius: 0px !important;
-  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
-  padding: 8px !important;
+  border-radius: 16px !important;
+  border: 1px solid transparent !important;
+  max-width: 850px !important;
+  margin: 0 auto !important;
+  padding: 8px 12px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
   transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .chat-input-container form:focus-within {
   border-color: var(--bot-color) !important;
-  box-shadow: 0 0 25px -5px color-mix(in srgb, var(--bot-color) 30%, transparent) !important;
+  box-shadow: 0 0 25px -4px color-mix(in srgb, var(--bot-color) 35%, transparent) !important;
 }
 
 form[class*=rounded-md] textarea,
 textarea.ant-input {
   background: transparent !important;
   color: #fff !important;
-  border-radius: 0px !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .chat-input-container button {
@@ -329,7 +361,7 @@ textarea.ant-input {
 }
 
 /* ==========================================================================
-   6. MENÚS DESPLEGABLES, DROPDOWNS Y OPCIONES (TEMATIZADOS)
+   6. MENÚS DESPLEGABLES, DROPDOWNS Y OPCIONES
    ========================================================================== */
 .ant-dropdown,
 .ant-dropdown-menu,
@@ -369,25 +401,26 @@ div.ant-dropdown .ant-menu-item:hover {
 }
 
 /* ==========================================================================
-   7. TARJETAS, RIBBONS Y TAGS
+   7. TARJETAS, RIBBONS Y TAGS (LIMPIOS Y MODERNOS)
    ========================================================================== */
 .ant-card,
 .char-card-class {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition: transform 0.25s ease, border-color 0.25s ease !important;
   background: #18181D !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .ant-card.ant-card-hoverable:hover,
 .char-card-class:hover {
-  transform: rotate(-2deg) scale(1.03);
+  transform: translateY(-4px) !important;
   border-color: var(--bot-color) !important;
 }
 
 .ant-card-head {
   background-color: #1F1F24 !important;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   padding: 12px 16px;
   border-radius: 12px 12px 0 0;
 }
@@ -404,15 +437,14 @@ div.ant-dropdown .ant-menu-item:hover {
 }
 
 .ant-tag {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: #fff !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #e0e0e0 !important;
   border: none !important;
-  border-radius: 0 !important;
-  padding: 0.1em 0.5em !important;
-  font-size: 0.6rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%) !important;
+  border-radius: 6px !important;
+  padding: 0.15em 0.6em !important;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
 }
 
 .ant-tag:hover {
@@ -423,13 +455,10 @@ div.ant-dropdown .ant-menu-item:hover {
 .ant-ribbon {
   background: var(--bot-color) !important;
   color: #000 !important;
-  font-weight: 800 !important;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  padding: 0 10px 0 5px !important;
+  font-weight: 700 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
   font-size: 10px !important;
-  text-transform: uppercase !important;
 }
 
 /* ==========================================================================
@@ -454,6 +483,7 @@ div.ant-dropdown .ant-menu-item:hover {
   background: transparent !important;
   color: #ccc !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
 }
 
 .ant-btn-default:hover {
@@ -461,21 +491,15 @@ div.ant-dropdown .ant-menu-item:hover {
   color: var(--bot-color) !important;
 }
 
-@keyframes danger-glow {
-  0% { box-shadow: 0 0 8px -2px rgba(255, 80, 80, 0.4); }
-  50% { box-shadow: 0 0 12px 0 rgba(255, 80, 80, 0.8); }
-  100% { box-shadow: 0 0 8px -2px rgba(255, 80, 80, 0.4); }
-}
-
 .ant-btn-dangerous {
   background: rgba(80, 20, 20, 0.6) !important;
   color: #ffc2c2 !important;
   border: 1px solid rgba(255, 80, 80, 0.6) !important;
-  animation: danger-glow 2.5s infinite ease-in-out !important;
+  border-radius: 8px !important;
 }
 
 /* ==========================================================================
-   9. TOOLTIPS Y FORMULARIOS
+   9. TOOLTIPS Y AJUSTES DE FORMULARIO
    ========================================================================== */
 .ant-tooltip-inner {
   background: #1F1F24 !important;
@@ -498,30 +522,8 @@ textarea.ant-input:focus {
 }
 
 /* ==========================================================================
-   10. GLITCH Y MISCELÁNEA
+   10. TABS, SWITCHES Y PANELES
    ========================================================================== */
-@keyframes glitch-box-shadow {
-  0%, 100%, 90%, 93% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
-  91% { box-shadow: 3px 2px 0 red, -3px -2px 0 #0ff, 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
-  92% { box-shadow: 2px -1px 0 red, -2px 1px 0 #0ff, 0 4px 30px rgba(0, 0, 0, 0.2) !important; }
-}
-
-@keyframes glitch-text-shadow {
-  0%, 100%, 90%, 93% { text-shadow: none; }
-  91% { text-shadow: -2px 0 0 red, 2px 0 0 #0ff, 0 0 5px; }
-  92% { text-shadow: 1px 2px 0 red, -1px -2px 0 #0ff, 0 0 5px; }
-}
-
-.ant-card:has(a[href*="/users/asq41270-droid"]),
-.char-card-class:has(a[href*="/users/asq41270-droid"]) {
-  animation: 4s step-end infinite glitch-box-shadow;
-}
-
-.ant-card a[href*="/users/asq41270-droid"],
-.char-card-class a[href*="/users/asq41270-droid"] {
-  animation: 4s step-end infinite glitch-text-shadow;
-}
-
 .ant-collapse-content.ant-collapse-content-active {
   background: #18181D !important;
   border: none !important;
