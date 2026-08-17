@@ -58,7 +58,9 @@ div.abs-100-dvh[style*="fixed"],
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  padding: 8px 16px !important;
+  padding: 0 16px !important;
+  height: 52px !important;
+  min-height: 52px !important;
   position: relative !important;
   z-index: 50 !important;
   pointer-events: auto !important;
@@ -66,11 +68,13 @@ div.abs-100-dvh[style*="fixed"],
   box-sizing: border-box !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: center !important;
 }
 
 .ant-row.ant-row-center .ant-col {
   display: flex !important;
   width: 100% !important;
+  height: 100% !important;
   justify-content: space-between !important;
   align-items: center !important;
   position: relative !important;
@@ -83,9 +87,17 @@ div.abs-100-dvh[style*="fixed"],
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  height: 100% !important;
   flex: 1 1 auto !important;
   min-width: 0 !important;
-  overflow: hidden !important;
+}
+
+.ant-row.ant-row-center .center.items-center > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  height: 100% !important;
 }
 
 .ant-row.ant-row-center button,
@@ -100,11 +112,14 @@ div.abs-100-dvh[style*="fixed"],
   justify-content: center !important;
   flex-shrink: 0 !important;
   border-radius: 8px !important;
-  height: 36px !important;
-  width: 36px !important;
+  height: 34px !important;
+  width: 34px !important;
+  min-width: 34px !important;
   padding: 0 !important;
+  margin: 0 !important;
   background: transparent !important;
   border: none !important;
+  box-shadow: none !important;
   transition: all 0.2s ease !important;
 }
 
@@ -116,7 +131,10 @@ div.abs-100-dvh[style*="fixed"],
 .ant-row.ant-row-center svg,
 .ant-row.ant-row-center .anticon {
   color: var(--bot-color) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.15rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .chat-area-row {
@@ -340,11 +358,11 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA (CENTRADA, CON BORDES REDONDEADOS Y SIN BRILLO)
+   5. BARRA DE ENTRADA (UNIFICADA CON BORDES REDONDEADOS Y SIN SEGUNDO FONDO)
    ========================================================================== */
 .chat-input-container {
   padding-bottom: 16px !important;
-  padding-top: 4px !important;
+  padding-top: 6px !important;
   background: transparent !important;
   display: flex !important;
   justify-content: center !important;
@@ -352,30 +370,42 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 .chat-input-container .ant-row,
-.chat-input-container .ant-col {
+.chat-input-container .ant-col,
+.chat-input-container .rounded-md,
+.chat-input-container div[class*="shadow-lg"] {
+  background: transparent !important;
+  box-shadow: none !important;
   width: 100% !important;
   max-width: 850px !important;
   margin: 0 auto !important;
 }
 
+form.rounded-top,
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   width: 100% !important;
   max-width: 850px !important;
   margin: 0 auto !important;
-  padding: 8px 12px !important;
+  padding: 6px 10px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
   box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 .chat-input-container form:focus-within {
   border-color: rgba(255, 255, 255, 0.15) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.chat-input-container .d-flex,
+.chat-input-container .stack-buttons,
+.chat-input-container .no-hover-bg-color {
+  background: transparent !important;
 }
 
 form[class*=rounded-md] textarea,
@@ -386,10 +416,14 @@ textarea.ant-input {
   box-shadow: none !important;
   outline: none !important;
   font-size: 1rem !important;
+  padding: 6px 8px !important;
 }
 
 .chat-input-container button {
   color: var(--bot-color) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   transition: all 0.2s ease !important;
 }
 
