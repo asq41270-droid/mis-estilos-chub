@@ -358,7 +358,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA (RESTAURADA, CENTRADA Y CON BORDES REDONDEADOS)
+   5. BARRA DE ENTRADA (DOBLE FONDO REDONDEADO E ICONOS TEMATIZADOS)
    ========================================================================== */
 .chat-input-container {
   padding-bottom: 16px !important;
@@ -371,7 +371,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 .chat-input-container .ant-row,
-.chat-input-container .ant-row.ant-row-center {
+.chat-input-container .ant-col {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -383,37 +383,24 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   max-width: 850px !important;
 }
 
-.chat-input-container .ant-col,
+/* El segundo fondo contenedor de toda la barra */
+.chat-input-container .rounded-top,
 .chat-input-container .rounded-md,
-.chat-input-container div[class*="shadow-lg"] {
-  background: transparent !important;
-  box-shadow: none !important;
-  width: 100% !important;
-  max-width: 850px !important;
-  margin: 0 auto !important;
-}
-
-form.rounded-top,
+.chat-input-container div[class*="shadow-lg"],
 form[class*=rounded-md],
 .chat-input-container form {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
   width: 100% !important;
   max-width: 850px !important;
   margin: 0 auto !important;
   padding: 6px 12px !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45) !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
-  display: block !important;
-}
-
-.chat-input-container form:focus-within {
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .chat-input-container .d-flex,
@@ -443,17 +430,25 @@ textarea.ant-input {
   flex: 1 !important;
 }
 
-.chat-input-container button {
+/* Iconos de la barra (micrófono, flecha de enviar y 3 puntos) tematizados */
+.chat-input-container button,
+.chat-input-container .stack-buttons button,
+.chat-input-container svg,
+.chat-input-container .lucide {
   color: var(--bot-color) !important;
+  stroke: var(--bot-color) !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   transition: all 0.2s ease !important;
 }
 
-.chat-input-container button:hover {
-  color: #fff !important;
-  transform: translateY(-1px) !important;
+.chat-input-container button:hover,
+.chat-input-container button:hover svg,
+.chat-input-container button:hover .lucide {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  transform: scale(1.1) !important;
 }
 
 /* ==========================================================================
