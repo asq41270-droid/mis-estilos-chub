@@ -358,7 +358,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
 }
 
 /* ==========================================================================
-   5. BARRA DE ENTRADA (DOBLE FONDO REDONDEADO E ICONOS TEMATIZADOS)
+   5. BARRA DE ENTRADA (FONDO BASE CLARO, BORDES REDONDEADOS Y SIN BORDES DE COLOR)
    ========================================================================== */
 .chat-input-container {
   padding-bottom: 16px !important;
@@ -370,8 +370,7 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   box-sizing: border-box !important;
 }
 
-.chat-input-container .ant-row,
-.chat-input-container .ant-col {
+.chat-input-container .ant-row {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -383,24 +382,42 @@ button.ant-btn-circle.message-control-buttons:has(svg[data-icon=right]) svg {
   max-width: 850px !important;
 }
 
-/* El segundo fondo contenedor de toda la barra */
-.chat-input-container .rounded-top,
-.chat-input-container .rounded-md,
-.chat-input-container div[class*="shadow-lg"],
-form[class*=rounded-md],
-.chat-input-container form {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: color-mix(in srgb, var(--bot-color) 4%, #18181D) !important;
+/* El fondo de atrás: más claro, redondeado (16px) y envolviendo todo */
+.chat-input-container .ant-col {
+  background: #1E1E24 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 16px !important;
-  border: 1px solid color-mix(in srgb, var(--bot-color) 20%, rgba(255, 255, 255, 0.08)) !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45) !important;
   width: 100% !important;
   max-width: 850px !important;
   margin: 0 auto !important;
-  padding: 6px 12px !important;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45) !important;
-  box-sizing: border-box !important;
+  padding: 4px 8px !important;
   overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* El formulario interior se integra sin fondos duplicados ni bordes */
+.chat-input-container form,
+form.rounded-top,
+form[class*=rounded-md] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Desactivar cualquier recuadro sobrante de Chub */
+.chat-input-container .rounded-md,
+.chat-input-container div[class*="shadow-lg"] {
+  display: none !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 .chat-input-container .d-flex,
@@ -425,12 +442,12 @@ textarea.ant-input {
   box-shadow: none !important;
   outline: none !important;
   font-size: 1rem !important;
-  padding: 6px 8px !important;
+  padding: 8px !important;
   resize: none !important;
   flex: 1 !important;
 }
 
-/* Iconos de la barra (micrófono, flecha de enviar y 3 puntos) tematizados */
+/* Iconos tematizados con el color del bot */
 .chat-input-container button,
 .chat-input-container .stack-buttons button,
 .chat-input-container svg,
